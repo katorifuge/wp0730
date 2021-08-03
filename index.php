@@ -28,7 +28,7 @@
       ?>
           <li>
             <a class="news__list-link" href="<?php the_permalink(); ?>">
-              <span class="news__list-data"><?php echo get_the_date('Y-m-d'); ?></span>
+              <span class="news__list-date"><?php echo get_the_date('Y-m-d'); ?></span>
 
               <span class="news__list-cat">
                 <?php
@@ -40,13 +40,20 @@
                   $limit = 2;
                   $num = $wp_query->current_post;
                   if ($limit > $num) :
-                    echo '<small class="new"><span class="new_label">New</span></small>';
+                    echo '<small class="new"><span class="news__new-label">New</span></small>';
                   endif;
                 endif;
                 ?>
               </span>
               <span class="news__list-detail">
-                <?php the_title(); ?>
+                <?php
+                if (mb_strlen($post->post_title, 'UTF-8') > 80) {
+                  $title = mb_substr($post->post_title, 0, 80, 'UTF-8');
+                  echo $title . '…';
+                } else {
+                  echo $post->post_title;
+                }
+                ?>
               </span>
             </a>
           </li>
@@ -55,7 +62,7 @@
       wp_reset_query(); ?>
     </ul>
     <div class="news__border-bottom"></div>
-    <p class="news-articles_link">
+    <p class="news__articles-link">
       <a href="<?php echo get_post_type_archive_link('news'); ?>" class="blog__link">ニュース一覧へ</a>
     </p>
   </div>
@@ -117,24 +124,24 @@
           <?php while ($blog_query->have_posts()) : ?>
             <?php $blog_query->the_post(); ?>
 
-            <a class="blog-wrap__item"  href="<?php the_permalink(); ?>">
+            <a class="blog-wrap__item" href="<?php the_permalink(); ?>">
               <?php if (has_post_thumbnail()) : ?>
                 <?php the_post_thumbnail(); ?>
               <?php else : ?>
-                <img src="<?php echo get_template_directory_uri(); ?>/img/no-images.png" alt="" class="blog-wrap__item-eyecatch">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/no-images.png" alt="noi-mages" class="blog-wrap__item-eyecatch">
               <?php endif; ?>
               <?php if (!is_category() && has_category()) : ?>
                 <span class="blog-wrap__item-cat"><?php $postcat = get_the_category();
-                echo $postcat[0]->name;
-                ?>
+                                                  echo $postcat[0]->name;
+                                                  ?>
                 </span>
               <?php endif; ?>
 
               <div class="blog-wrap__item-content">
                 <h3 class="blog-wrap__item-content-ttl">
                   <?php
-                  if (mb_strlen($post->post_title, 'UTF-8') > 30) {
-                    $title = mb_substr($post->post_title, 0, 30, 'UTF-8');
+                  if (mb_strlen($post->post_title, 'UTF-8') > 28) {
+                    $title = mb_substr($post->post_title, 0, 28, 'UTF-8');
                     echo $title . '…';
                   } else {
                     echo $post->post_title;

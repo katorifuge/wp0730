@@ -2,9 +2,9 @@
 
 <body>
   <main>
-    <div class="main-img">
+    <h1 class="main-img">
       <img src="<?php echo get_template_directory_uri(); ?>/img/404.png">
-    </div>
+</h1>
 
 
     <div id="contact">

@@ -4,10 +4,13 @@
 <head>
   <meta charset="<?php bloginfo('charset') ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="フーランス特化型プログラミングスクール「COACHTECH]を運営している株式会社estraのコーポレートサイト">
+  <meta name="robots" content="noindex">
   <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.svg">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
   <title>Estra,inc.</title>
+  <link rel ="canonical" lref="http://ocalhost/wp05/">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   <?php wp_head(); ?>

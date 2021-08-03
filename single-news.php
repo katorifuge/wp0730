@@ -2,10 +2,10 @@
 <?php if (have_posts()) : the_post(); ?>
   <main>
     <div class="firstview">
-      <div class="firstview__content category_firstview__content">
-        <p class="common__sub-ttl category_common__sub-ttl">NEWS</p>
+      <div class="firstview__content category_firstview-content">
+        <p class="common__sub-ttl category__common-sub-ttl">NEWS</p>
       </div>
-      <div class="firstview__eyecatch category_firstview__eyecatch-blog"><img src="<?php echo get_template_directory_uri(); ?>/img/archive-news__first.png" alt="">
+      <div class="firstview__eyecatch category_firstview-eyecatch-blog"><img src="<?php echo get_template_directory_uri(); ?>/img/archive-news__first.png" alt="">
       </div>
     </div>
 
